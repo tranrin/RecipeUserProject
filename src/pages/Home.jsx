@@ -5,9 +5,7 @@ import {motion} from "framer-motion"
 import ReactGA from 'react-ga';
 
 function Home() {
-  useEffect(()=>{
-    ReactGA.pageview(window.location.pathname)
-  },[])
+
   return (
 
       <motion.div

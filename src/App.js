@@ -6,10 +6,15 @@ import styled from "styled-components";
 import { GiKnifeFork } from "react-icons/gi";
 import ReactGA from 'react-ga';
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const TRACKING_ID = 'G-1SWK01PE4J';
-ReactGA.initialize(TRACKING_ID)
+
 function App() {
+  useEffect(()=>{
+    ReactGA.initialize(TRACKING_ID)
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  },[])
   return (
     <div className="App" >
 
