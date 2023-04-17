@@ -8,7 +8,7 @@ import ReactGA from "react-ga4";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const TRACKING_ID = 'G-1SWK01PE4J';
+const TRACKING_ID = 'G-E00545156D';
 
 function App() {
   useEffect(()=>{
