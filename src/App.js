@@ -4,7 +4,7 @@ import Pages from "./pages/Pages";
 import Search from "./components/Search";
 import styled from "styled-components";
 import { GiKnifeFork } from "react-icons/gi";
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga4";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -13,7 +13,7 @@ const TRACKING_ID = 'G-1SWK01PE4J';
 function App() {
   useEffect(()=>{
     ReactGA.initialize(TRACKING_ID)
-    ReactGA.pageview(window.location.pathname + window.location.search)
+    ReactGA.send({ hitType: "pageview", page: "/home"});
   },[])
   return (
     <div className="App" >
