@@ -8,11 +8,11 @@ import ReactGA from "react-ga4";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const TRACKING_ID = 'G-E00545156D';
+
 
 function App() {
   useEffect(()=>{
-    ReactGA.initialize(TRACKING_ID)
+    ReactGA.initialize(process.env.REACT_APP_TRACKING_ID)
     ReactGA.send({ hitType: "pageview", page: "/home"});
   },[])
   return (
