@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 function Search() {
+    
     const [getinput, setInput] = useState("");
     const navigate = useNavigate();
     const submitHandle = (e) =>{

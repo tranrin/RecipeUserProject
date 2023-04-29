@@ -6,10 +6,17 @@ import { Link, useParams } from 'react-router-dom'
 function Cuisine() {
 let params = useParams();
 const [cuisine, setCuisine] = useState([]);
-const getCuisine = async (name) =>{
-    const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`) 
+// const getCuisine = async (name) =>{
+//     const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${name}`) 
+//     const recipes = await data.json()
+//     console.log('json ',recipes.results )
+//     setCuisine(recipes.results);
+// }
+const getCuisine = async (idcategory) =>{
+    const data = await fetch(`https://localhost:44396/api/GetCongThuc/GetCongThucbyCountry/${idcategory}`) 
     const recipes = await data.json()
-    setCuisine(recipes.results);
+    console.log('json ',recipes )
+    setCuisine(recipes);
 }
 useEffect(()=>{
     getCuisine(params.type)
@@ -25,8 +32,9 @@ useEffect(()=>{
             return (
                 <Card key={item.id}>
                     <Link to={'/recipe/' + item.id}>
-                    <img src={item.image} alt={item.title} />
-                    <h4>{item.title}</h4>
+                    
+                    <img src={item.url} alt={item.title} />
+                    <h4>{item.tenCongThuc}</h4>
                     </Link>
             
                 </Card>

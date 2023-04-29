@@ -4,23 +4,28 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 function Searched() {
     let params = useParams();
-    const [searchedRecipes, setSearchedRecipes] = useState([]);
+    const [searchedRecipes, setSearchedRecipes] = useState({});
+    console.log('haha12344',searchedRecipes)
     const getSearched = async(name) =>{
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}`) 
+        const data = await fetch(`https://localhost:44396/api/GetCongThucByTen/GetCongThucByTen/${name}`) 
         const recipes = await data.json();
-        setSearchedRecipes(recipes.results)
+        if(recipes[0].id!= null)
+
+            setSearchedRecipes(recipes)
+
+        console.log('123hah', recipes)
     }
     useEffect(()=>{
         getSearched(params.search)
     },[params.search])
   return (
     <Grid>
-        {searchedRecipes.map((item)=>{
+        {searchedRecipes?.map((item)=>{
             return(
                 <Card key={item.id}>
-                      <Link to={'/recipe/' + item.id}>
-                      <img src={item.image} alt={item.title}></img>
-                      <h4>{item.title}</h4>
+                      <Link to={'/recipe/' + item?.id}>
+                      <img src={item?.url} ></img>
+                      <h4>{item?.tenCongThuc}</h4>
                       </Link>
 
             </Card>
